@@ -1,0 +1,19 @@
+@use "../abstracts/mixins";
+@use "../abstracts/vars";
+@include mixins.font-face("Iunito", "../assets/fonts/Iunito/Iunito-Light", 300);
+@include mixins.font-face("Iunito", "../assets/fonts/Iunito/Iunito-Regular", 400);
+@include mixins.font-face("Iunito", "../assets/fonts/Iunito/Iunito-SemiBold", 600);
+
+body {
+  color: var(--text-primary);
+  font-weight: vars.$weight-Regular;
+  font-family: Iunito, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: vars.$weight-SemiBold;
+}

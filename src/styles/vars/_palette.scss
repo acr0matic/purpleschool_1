@@ -1,0 +1,19 @@
+:root {
+  --gray-900: #222831;
+  --gray-800: #272e37;
+  --gray-700: #343d4b;
+  --gray-600: #3F4958;
+  --white: #f8f8f8;
+  --black: #1a1a1a;
+
+  --text-primary: var(--white);
+  --text-placeholder: var(--gray-600);
+
+  --bg-card: var(--gray-900);
+  --bg-forecast: var(--gray-800);
+  --bg-forecast-hover: var(--gray-700);
+  --bg-forecast-active: var(--white);
+  --bg-app: var(--gray-700);
+
+  --gradient: linear-gradient(91deg, rgba(144, 217, 224, 0.9) 0.2%, rgba(84, 96, 230, 0.9) 100%);
+}
