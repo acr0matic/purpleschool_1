@@ -1,5 +1,8 @@
 <template>
-  <button class="button">Кнопка</button>
+  <button class="button">
+    <slot name="icon"></slot>
+    <slot></slot>
+  </button>
 </template>
 
 <script setup>

@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <p>Текущая дата: {{ getCurrentDate() }}</p>
-    <Button></Button>
-  </div>
+  <main>
+    <Button>
+      Сохранить
+    </Button>
+  </main>
 </template>
 
 <script setup>
 import Button from "./components/Button.vue";
-
-const dateFormatter = new Intl.DateTimeFormat('ru-RU', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-});
-
-const getCurrentDate = (currentDate = new Date()) => {
-  return dateFormatter.format(currentDate);
-}
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+main {
+  padding: 50px 64px;
+  border-radius: 25px;
+
+  background-color: var(--bg-card);
+}
+</style>
