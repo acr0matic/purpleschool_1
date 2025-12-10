@@ -1,18 +1,20 @@
 <template>
   <button class="button">
-    <slot name="icon"></slot>
     <slot></slot>
   </button>
 </template>
 
 <script setup>
-
 </script>
 
 <style lang="scss" scoped>
 @use '../styles/abstracts/vars';
 
 .button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  
   min-width: 140px;
   border-radius: 10px;
   border: none;
