@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-const { label = "Не задано", value = "Нет данных" } = defineProps({
+const { label = "Не задано", value = "0" } = defineProps({
   label: String,
   value: String,
 });

@@ -14,8 +14,10 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
   
   min-width: 140px;
+  min-height: 53px;
   border-radius: 10px;
   border: none;
   outline: none;
@@ -25,6 +27,7 @@
   background-image: var(--gradient);
   color: var(--text-primary);
 
+  font-size: 20px;
   font-weight: vars.$weight-SemiBold;
 
   cursor: pointer;

@@ -1,7 +1,8 @@
 <template>
   <main>
+    {{ currentCity }}
     <div class="statistic__list">
-      <Statistic v-for="stat in data" :key="stat" v-bind="stat"></Statistic>
+      <Statistic v-for="item in dataModified" :key="item" v-bind="item"></Statistic>
     </div>
     <!-- /.statistic__list -->
 
@@ -10,27 +11,39 @@
 </template>
 
 <script setup>
+import { computed, ref } from "vue";
 import Statistic from "./components/Statistic.vue";
 import CitySelect from "./components/CitySelect.vue";
 
-const data = {
-  hydration: {
-    label: 'Влажность',
-    value: '90%'
-  },
-  rain: {
-    label: 'Осадки',
-    value: '5%'
-  },
-  wind: {
-    label: 'Ветер',
-    value: '3 м/с'
-  },
-}
+const currentCity = ref('Tambov');
 
-const getCity = (city) => {
-  console.log(city);
+let data = ref({
+  hydration: 90,
+  rain: 20,
+  wind: 3,
+});
+
+const dataModified = computed(() => {
+  return [
+    {
+      label: 'Влажность',
+      value: data.value.hydration + '%'
+    },
+    {
+      label: 'Осадки',
+      value: data.value.rain + '%'
+    },
+    {
+      label: 'Ветер',
+      value: data.value.wind + ' м/с'
+    }
+  ]
+});
+
+const getCity = (city) => {  
+  currentCity.value = city;
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
