@@ -9,7 +9,7 @@
       </template>
 
       <template v-else>
-        <Input v-model="currentCity" placeholder="Введите город"></Input>
+        <Input v-model="currentCity" placeholder="Введите город" @keyup.enter="save"></Input>
         <Button @click="save">Сохранить</Button>
       </template>
     </div>
@@ -20,12 +20,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Button from './Button.vue';
 import Input from './Input.vue';
 
 const isEdited = ref(false);
-const currentCity = ref('');
+const currentCity = ref('Москва');
+
+onMounted(() => {
+  emit('selectCity', currentCity.value)
+})
 
 const emit = defineEmits({
   selectCity: null,
@@ -33,7 +37,7 @@ const emit = defineEmits({
 
 function save() {
   isEdited.value = false;
-  emit('selectCity', 'Moscow')
+  emit('selectCity', currentCity.value)
 }
 
 function edit() {

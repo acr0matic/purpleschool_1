@@ -1,8 +1,8 @@
 <template>
   <main>
-    {{ currentCity }}
+    <Error :data="error"></Error>
     <div class="statistic__list">
-      <Statistic v-for="item in dataModified" :key="item" v-bind="item"></Statistic>
+      <Statistic v-for="item in dataModified" :key="item.label" v-bind="item"></Statistic>
     </div>
     <!-- /.statistic__list -->
 
@@ -14,36 +14,50 @@
 import { computed, ref } from "vue";
 import Statistic from "./components/Statistic.vue";
 import CitySelect from "./components/CitySelect.vue";
+import Error from "./components/Error.vue";
 
-const currentCity = ref('Tambov');
-
-let data = ref({
-  hydration: 90,
-  rain: 20,
-  wind: 3,
-});
+const data = ref(null);
+const error = ref(null);
 
 const dataModified = computed(() => {
+  if (!data.value) {
+    return []
+  }
+
   return [
     {
       label: 'Влажность',
-      value: data.value.hydration + '%'
+      value: data.value.current.humidity + '%'
     },
     {
-      label: 'Осадки',
-      value: data.value.rain + '%'
+      label: 'Облачность',
+      value: data.value.current.cloud + '%'
     },
     {
       label: 'Ветер',
-      value: data.value.wind + ' м/с'
+      value: data.value.current.wind_kph + ' км/ч'
     }
   ]
 });
 
-const getCity = (city) => {  
-  currentCity.value = city;
+const getCity = async (city) => {
+  const params = new URLSearchParams({
+    q: city,
+    lang: 'ru',
+    key: import.meta.env.VITE_API_KEY,
+    days: 3,
+  });
+
+  const response = await fetch(`${import.meta.env.VITE_API_ENDPOINT}/forecast.json?${params}`)
+  if (!response.ok) {
+    error.value = await response.json();
+    data.value = null;
+    return
+  }
+
+  error.value = null;
+  data.value = await response.json();
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
