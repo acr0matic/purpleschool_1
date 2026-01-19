@@ -1,20 +1,41 @@
 <template>
-  <main>
-    <Error :data="error"></Error>
-    <div class="statistic__list">
-      <Statistic v-for="item in dataModified" :key="item.label" v-bind="item"></Statistic>
-    </div>
-    <!-- /.statistic__list -->
+  <main class="weather-widget">
+    <div class="weather-widget__body">
+      <div class="weather-widget__info">
+        <Error :data="error"></Error>
 
-    <CitySelect @select-city="getCity"></CitySelect>
+        <template v-if="data">
+          <div class="weather-widget__statistic">
+            <Statistic v-for="item in dataModified" :key="item.label" v-bind="item"></Statistic>
+          </div>
+          <!-- /.weather-widget__statistic -->
+
+          <div class="weather-widget__forecast">
+            <Day
+                v-for="item in data.forecast.forecastday"
+                :key="item.date"
+                :date="item.date"
+                :temp="item.day.avgtemp_c"
+                :weather-code="item.day.condition.code">
+            </Day>
+          </div>
+          <!-- /.weather-widget__forecast -->
+        </template>
+
+        <CitySelect @select-city="getCity"></CitySelect>
+      </div>
+      <!-- /.weather-widget__info -->
+    </div>
+    <!-- /.weather-widget__body -->
   </main>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import {computed, ref} from "vue";
 import Statistic from "./components/Statistic.vue";
 import CitySelect from "./components/CitySelect.vue";
 import Error from "./components/Error.vue";
+import Day from "./components/Card/Day.vue";
 
 const data = ref(null);
 const error = ref(null);
@@ -60,4 +81,13 @@ const getCity = async (city) => {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+.weather-widget {
+  &__forecast {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    font-weight: $weight-Bold;
+    color: #ff0000;
+  }
+}
+</style>
