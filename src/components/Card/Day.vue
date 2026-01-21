@@ -39,7 +39,7 @@ const props = defineProps({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     default: () => new Date(),
   },
   temp: Number,
@@ -56,6 +56,8 @@ const formattedDate = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@use "@/styles/abstracts/vars";
+
 .card {
   display: flex;
   flex-direction: column;

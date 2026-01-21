@@ -8,6 +8,8 @@
 </script>
 
 <style lang="scss" scoped>
+@use "@/styles/abstracts/vars";
+
 .button {
   display: flex;
   gap: 8px;
@@ -26,7 +28,7 @@
   color: var(--text-primary);
 
   font-size: 20px;
-  font-weight: $weight-SemiBold;
+  font-weight: vars.$weight-SemiBold;
 
   cursor: pointer;
   transition: 0.3s ease;

@@ -9,13 +9,15 @@
 </template>
 
 <script setup>
-const { label = "Не задано", value = "0" } = defineProps({
+const {label = "Не задано", value = "0"} = defineProps({
   label: String,
   value: String,
 });
 </script>
 
 <style lang="scss" scoped>
+@use "@/styles/abstracts/vars";
+
 .statistic {
   &__row {
     display: flex;
@@ -24,6 +26,8 @@ const { label = "Не задано", value = "0" } = defineProps({
     justify-content: space-between;
     font-size: 28px;
     text-transform: uppercase;
+    font-weight: vars.$weight-Bold;
+
   }
 
   &__label {
@@ -33,7 +37,6 @@ const { label = "Не задано", value = "0" } = defineProps({
   }
 
   &__value {
-    font-weight: $weight-SemiBold;
   }
 }
 </style>

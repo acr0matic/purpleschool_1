@@ -13,6 +13,7 @@ const data = defineModel(
 
 <style scoped lang="scss">
 input {
+  flex-grow: 1;
   padding: 14px 18px;
   border-radius: 10px;
   border: none;

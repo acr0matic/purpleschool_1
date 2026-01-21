@@ -24,5 +24,6 @@ const size = computed(() => props.size + 'px');
 .icon {
   display: inline-block;
   flex-shrink: 0;
+  width: 100%;
 }
 </style>

@@ -82,12 +82,28 @@ const getCity = async (city) => {
 </script>
 
 <style lang="scss" scoped>
+@use "@/styles/abstracts/vars";
+
 .weather-widget {
+  &__statistic {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__forecast {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    font-weight: $weight-Bold;
-    color: #ff0000;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    margin-top: 90px;
+  }
+
+  &__info {
+    width: 540px;
+    padding: 54px 48px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: var(--gray-900);
   }
 }
 </style>

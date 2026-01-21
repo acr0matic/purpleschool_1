@@ -1,4 +1,4 @@
-<template>  
+<template>
   <div class="city-select">
     <div class="city-select__action">
       <template v-if="!isEdited">
@@ -9,7 +9,7 @@
       </template>
 
       <template v-else>
-        <Input v-model="currentCity" placeholder="Введите город" @keyup.enter="save"></Input>
+        <Input v-model="currentCity" v-focus placeholder="Введите город" @keyup.enter="save"></Input>
         <Button @click="save">Сохранить</Button>
       </template>
     </div>
@@ -54,6 +54,10 @@ function edit() {
   &__action {
     display: flex;
     gap: 12px;
+
+    button {
+      flex-grow: 1;
+    }
   }
 }
 </style>
